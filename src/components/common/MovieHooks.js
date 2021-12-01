@@ -33,13 +33,13 @@ function MovieHooks() {
         });
         try {
         let payload = await axios.get(
-            `http://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&s=${movieTitle}`
+            `https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&s=${movieTitle}`
         );
 
         let movieIdArray = payload.data.Search.map((item) => item.imdbID);
 
         let promiseMovieArray = movieIdArray.map(async (item) => {
-            return await axios.get(`http://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&i=${item}`);
+            return await axios.get(`https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&i=${item}`);
         });
         //[<Promise>, <Promise>]
 
