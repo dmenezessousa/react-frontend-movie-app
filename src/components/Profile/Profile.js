@@ -30,7 +30,7 @@ function Profile() {
         e.preventDefault();
         
         try{
-            let url = process.env.NODE.ENV === "production" 
+            let url = process.env.NODE_ENV === "production" 
             ? "https://backend-passport-movie.herokuapp.com/" 
             :"http://localhost:3001/api/users/update-profile";
             await axios.put(url,

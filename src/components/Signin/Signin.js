@@ -29,7 +29,7 @@ function Signin({setUser}) {
         e.preventDefault();
         
         try{
-            let url = process.env.NODE.ENV === "production" 
+            let url = process.env.NODE_ENV === "production" 
             ? "https://backend-passport-movie.herokuapp.com/api/users/login" 
             :"http://localhost:3001/api/users/login";
             let payload = await axios.post(url,

@@ -9,7 +9,7 @@ function ProtectedHome() {
 
     async function handleAddToFavorite(movieDetail){
         try{
-            let url = process.env.NODE.ENV === "production" 
+            let url = process.env.NODE_ENV === "production" 
             ? "https://backend-passport-movie.herokuapp.com/api/users/movies/add-movie" 
             :`http://localhost:3001/api/users/movies/add-movie`;
             await axios.post(

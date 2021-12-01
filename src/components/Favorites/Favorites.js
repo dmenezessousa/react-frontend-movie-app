@@ -18,7 +18,7 @@ function Favorites() {
 
     async function getAllMovies (){
         try{
-            let url = process.env.NODE.ENV === "production" 
+            let url = process.env.NODE_ENV === "production" 
             ? "https://backend-passport-movie.herokuapp.com/api/users/movies/get-all-movies" 
             :"http://localhost:3001/api/users/movies/get-all-movies";
             let payload = await axios.get(url,
@@ -36,7 +36,7 @@ function Favorites() {
 
     async function handleDelete(movieID){
         try{
-            let url = process.env.NODE.ENV === "production" 
+            let url = process.env.NODE_ENV === "production" 
             ? `https://backend-passport-movie.herokuapp.com/api/users/movies/delete-movie/${movieID}` 
             :`http://localhost:3001/api/users/movies/delete-movie/${movieID}`;
             let payload = await axios.delete(
