@@ -7,7 +7,6 @@ function Movie() {
     const [movieList, setMovieList] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [error, setError] = useState("");
-    const {REACT_APP_MOVIE_TOKEN} = process.env
     useEffect(() => {
         fetchMovies();
     },[]);
@@ -15,7 +14,7 @@ function Movie() {
     async function fetchMovies(){
     try{
         let payload = await axios.get(
-            `https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&s=harry-potter`
+            `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_TOKEN}&s=harry-potter`
         );
         setMovieList(payload.data.Search)
     }catch(e){
@@ -32,13 +31,13 @@ function Movie() {
 
         try{
             let payload = await axios.get(
-                `https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&s=${inputValue}`
+                `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_TOKEN}&s=${inputValue}`
             );
             setMovieList(payload.data.Search)
             let movieArray = payload.data.Search.map((item)=>item.imdbID);
             let promiseMoviesArray = movieArray.map(async (item)=>{
                 return await axios.get(
-                    `https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&s=${item}`
+                    `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_TOKEN}&s=${item}`
                 )
             })
             Promise.all(promiseMoviesArray)

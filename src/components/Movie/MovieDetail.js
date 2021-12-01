@@ -15,11 +15,10 @@ function MovieDetail() {
     useEffect(() => {
         getMoviesInfo();
     },[]);
-    const {REACT_APP_MOVIE_TOKEN} = process.env
     async function getMoviesInfo(){
         try{
             let payload = await axios.get(
-                `https://omdbapi.com/?apikey=${REACT_APP_MOVIE_TOKEN}&t=${name}`
+                `https://omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_TOKEN}&t=${name}`
             );
             setMovieList(payload.data); 
             console.log(movieList);
